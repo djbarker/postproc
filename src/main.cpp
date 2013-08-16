@@ -65,14 +65,12 @@ int main(int argc, char* argv[])
 	 */
 	boost::mpi::environment mpi_env(argc,argv);
 
-	// create the objects to read into
-	size_t nprocs = cmd["procs"].as<int>();
-	vector<Simulation<DIM>> cores(nprocs);
-
-	cout << "nprocs = " << nprocs << endl;
-
 	for(int t=cmd["start"].as<int>(); t<=cmd["stop"].as<int>(); t+=cmd["stride"].as<int>())
 	{
+		// create the objects to read into
+		size_t nprocs = cmd["procs"].as<int>();
+		vector<Simulation<DIM>> cores(nprocs);
+
 		// aggregates and outputs the particles.
 		Processor<DIM,2,2> processor;
 

@@ -140,7 +140,7 @@ void Processor<D,T,C>::generateVTKPointData(int fluid)
 	IdArray->SetNumberOfTuples(num);
 
 	num=0;
-	for(auto part : particles)
+	for(auto& part : particles)
 	{
 		if ((fluid<0) || ((int)part.fluid==fluid))
 		{
